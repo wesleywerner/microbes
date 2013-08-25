@@ -17,6 +17,7 @@
 
 import os
 import math
+import getpass
 import pickle
 from random import randint
 from random import choice
@@ -288,6 +289,9 @@ score_image = pygame.Surface((100, 30))
 score_image.set_colorkey(MAGENTA)
 score_image.fill(MAGENTA)
 p1, p2 = (None, None)
+login_name = getpass.getuser()
+if not login_name:
+    login_name = 'Player'
 
 while running:
     for event in pygame.event.get():
@@ -312,7 +316,7 @@ while running:
                 turn = 1
                 microbes = spawn(0)
                 players = []
-                p1 = Microbe('YOU')
+                p1 = Microbe(login_name)
                 p1.load_frames(image_map, Rect(32, 96, 32, 32), 2)
                 p1.rect.x = randint(60, play_area.width - 60)
                 p1.rect.y = randint(60, play_area.height - 60)
@@ -325,7 +329,7 @@ while running:
                 turn = 1
                 microbes = spawn(5)
                 players = []
-                p1 = Microbe('YOU')
+                p1 = Microbe(login_name)
                 p1.load_frames(image_map, Rect(32, 96, 32, 32), 2)
                 p1.rect.x = randint(60, play_area.width - 60)
                 p1.rect.y = randint(60, play_area.height - 60)
@@ -333,7 +337,7 @@ while running:
                 p1.draw_healthbar = True
                 microbes.append(p1)
                 players.append(p1)
-                p2 = Microbe('FRIEND')
+                p2 = Microbe('%s\'s friend' % login_name)
                 p2.load_frames(image_map, Rect(32, 96, 32, 32), 2)
                 p2.rect.x = randint(60, play_area.width - 60)
                 p2.rect.y = randint(60, play_area.height - 60)
