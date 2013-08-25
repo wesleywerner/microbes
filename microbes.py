@@ -306,7 +306,7 @@ while running:
                             p.kill_turn = 0
                     in_menu = True
             elif event.key == K_SPACE:
-                if p1:
+                if p1.alive or (p2 and p2.alive):
                     in_menu = in_menu ^ True
             elif event.key == K_1 and in_menu:
                 turn = 1
