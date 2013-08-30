@@ -374,15 +374,16 @@ while running:
         else:
             p1.travelate(acceleration=None, boundary=play_area)
         
-        if pressed[K_a]:
-            p2.turnate(20)
-        if pressed[K_d]:
-            p2.turnate(-20)
-        if pressed[K_w]:
-            p2.travelate(acceleration=1, boundary=play_area)
-        else:
-            if p2:
-                p2.travelate(acceleration=None, boundary=play_area)
+        if p2:
+            if pressed[K_a]:
+                p2.turnate(20)
+            if pressed[K_d]:
+                p2.turnate(-20)
+            if pressed[K_w]:
+                p2.travelate(acceleration=1, boundary=play_area)
+            else:
+                if p2:
+                    p2.travelate(acceleration=None, boundary=play_area)
         
         # effects
         dequeue = []
