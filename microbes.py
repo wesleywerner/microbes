@@ -94,7 +94,7 @@ class Microbe(pygame.sprite.Sprite):
         target.blit(self.image, self.draw_rect)
         if draw_indicator:
             #pygame.draw.rect(target, self.indicator_color, self.rect, 1)
-            font = pygame.font.Font(None, 18)
+            font = pygame.font.Font('UbuntuMono-B.ttf', 14)
             pix = font.render(self.name, False, self.indicator_color, MAGENTA)
             pix.set_colorkey(MAGENTA)
             target.blit(pix, self.rect.move(0, -16))
@@ -256,7 +256,7 @@ def spawn(amount):
     return menagerie
 
 def draw_score_card(score_card):
-    font = pygame.font.Font(None, 24)
+    font = pygame.font.Font('UbuntuMono-B.ttf', 16)
     score_list = []
     for score in score_card:
         score_list.append(font.render(
@@ -284,7 +284,7 @@ def add_score(score_card, score_name, score_value):
 effects = []
 score_card = load_scores()
 score_card_image = draw_score_card(score_card)
-score_font = pygame.font.Font(None, 20)
+score_font = pygame.font.Font('UbuntuMono-B.ttf', 14)
 score_image = pygame.Surface((100, 30))
 score_image.set_colorkey(MAGENTA)
 score_image.fill(MAGENTA)
@@ -309,7 +309,7 @@ while running:
                             score_card_image = draw_score_card(score_card)
                             p.kill_turn = 0
                     in_menu = True
-            elif event.key == K_SPACE:
+            elif event.key == K_SPACE and p1:
                 if p1.alive or (p2 and p2.alive):
                     in_menu = in_menu ^ True
             elif event.key == K_1 and in_menu:
